@@ -12,7 +12,13 @@
         {% for poll in poll_list %}
           
         
-        <li>{{ poll.created }} - {{poll.subject}}</li>
+        <li
+            {{ poll.created }} 
+            - <a href="{{poll.id}}/"{{poll.subject}}</a>
+            <a href="{{poll.id}}/update/">修改</a>
+            </li>
+
+
         {% endfor %}
     </ul>
 </body>
