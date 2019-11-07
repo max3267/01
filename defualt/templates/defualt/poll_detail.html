@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ poll.subject }}</h1>
+<ul>
+    {% for opt in options %}
+    <li><a href='/poll/vote/{{opt.id}}/'>{{ opt.title }} - {{ opt.count }}票</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+{% block page_title %}
+主題
+{% endblock %}
