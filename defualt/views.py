@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView,RedirectView,CreateView,UpdateView
+from django.urls import reverse
 from .models import *
 
 # Create your views here.
@@ -36,3 +37,18 @@ class PollUpdate(UpdateView):
     success_url = "/poll/"
 
 
+
+class OptionCreate(CreateView):
+    modle = option
+    fields =['title']
+
+    def get_success_url(self):
+        #return '/poll/'+str(self.kwargs['pid']+'/'
+        return reverse('poll_view', kwargs={'pk':self.kwargs['pid']})
+
+    def form_valid(self, form):
+        form.instance.poll_id = self.kwargs['pid']
+        return super().form_valid(form)
+
+
+    
