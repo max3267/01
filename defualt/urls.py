@@ -7,7 +7,7 @@ urlpatterns = [
     path('vote/<int:oid>/',Pollvote.as_view()),
     path('create/',PollCreateas_view()),
     path('<int:pk>/update/',PollCreateas_view()),
-    path('<int:pid>/create/'OptionCreate.as_view()),
+    path('<int:pid>/create/',OptionCreate.as_view()),
 
 
 ]

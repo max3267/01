@@ -41,6 +41,7 @@ class PollUpdate(UpdateView):
 class OptionCreate(CreateView):
     modle = option
     fields =['title']
+    template_name ='default/poll_form.html'
 
     def get_success_url(self):
         #return '/poll/'+str(self.kwargs['pid']+'/'
