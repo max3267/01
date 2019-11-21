@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView,RedirectView,CreateView,UpdateView
+from django.views.generic import ListView, DetailView,RedirectView,CreateView,UpdateView,DeleteView
 from django.urls import reverse
 from .models import *
 
@@ -50,6 +50,22 @@ class OptionCreate(CreateView):
     def form_valid(self, form):
         form.instance.poll_id = self.kwargs['pid']
         return super().form_valid(form)
+
+
+class OptionDelete(DeleteView):
+    model = Option
+    template_name = 'comfirm_delete'
+    def get_success_url(self):
+        return reverse('poll_view',args=[self.object.poll_id])
+
+
+class PollDelete(DeleteView):
+    model = Poll 
+    template_name = 'confirm_delete.html'
+    def get_success_url(self):
+        Option.objects.filter(poll_id=self.object.id).delete()
+        return reverse("poll_list")
+
 
 
     

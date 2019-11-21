@@ -6,6 +6,7 @@
 <ul>
     {% for opt in options %}
     <li><a href='/poll/vote/{{opt.id}}/'>{{ opt.title }} - {{ opt.count }}票</a></li>
+    <a href="{% url 'option_'%}"
     {% endfor %}
 </ul>
 {% endblock %}
