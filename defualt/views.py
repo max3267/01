@@ -5,14 +5,14 @@ from .models import *
 
 # Create your views here.
 class PollList(ListView):
-    model = poll
+    model = Poll
 
 
 
 
 
 class PollDetail(DetailView):
-    model = poll
+    model = Poll
 
     def get_context_data(self, **kwargs):
       ctx = super().get_context_data(**kwargs)
@@ -39,7 +39,7 @@ class PollUpdate(UpdateView):
 
 
 class OptionCreate(CreateView):
-    modle = option
+    modle = Option
     fields =['title']
     template_name ='default/poll_form.html'
 

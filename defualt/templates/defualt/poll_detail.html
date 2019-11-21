@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>{{ poll.subject }}</h1>
+<a href="/poll/((poll.id))/create/">新增選項</a>
 <ul>
     {% for opt in options %}
     <li><a href='/poll/vote/{{opt.id}}/'>{{ opt.title }} - {{ opt.count }}票</a></li>
